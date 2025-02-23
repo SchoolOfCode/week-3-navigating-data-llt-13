@@ -13,33 +13,57 @@ console.log(SOCBook);
 // Task 1
 // Complete the function so it returns Liz Rios' favourite fruit
 
-function lizRiosFavFruit() {
-  // Your code goes here...
+function lizRiosFavFruit(lookingName) {
+  let namePerson = SOCBook.data.people.find(
+    (person) => person.name.toLowerCase() === lookingName.toLowerCase()
+  );
+  return namePerson.favoriteFruit;
 }
 
-console.log("Liz Rios' favourite fruit is:", lizRiosFavFruit());
+console.log("Liz Rios' favourite fruit is:", lizRiosFavFruit("liz rios"));
 
 // Task 2
 // Complete the function so it returns Marie David's 2nd friend's name
 
-function marieDavid2ndFriend() {
-  // Your code goes here...
+function marieDavid2ndFriend(lookingName) {
+  let namePerson = SOCBook.data.people.find(
+    (person) => person.name.toLowerCase() === lookingName.toLowerCase()
+  );
+
+  if (!namePerson) {
+    return "Person not found.";
+  }
+
+  return namePerson.friends[1].name;
 }
 
-console.log("Marie David's 2nd friend is:", marieDavid2ndFriend());
+console.log("Marie David's 2nd friend is:", marieDavid2ndFriend("marie david"));
 
 // Task 3
 // Complete the function so Cooper Brady's greeting message is shown in the p tag with the id of "message"
 // We've helped start breaking down the plan!
 
-function cooperBradyGreeting() {
+function cooperBradyGreeting(lookingName) {
   // Your code goes here...
+  // Select Cooper Brady
+  let namePerson = SOCBook.data.people.find(
+    (person) => person.name.toLowerCase() === lookingName.toLowerCase()
+  );
+
+  console.log(SOCBook.data.people.indexOf(namePerson));
+
+  if (!namePerson) {
+    return "Person not found.";
+  }
   // Select Cooper Brady's greeting message from the object
+  let message = namePerson.greeting;
   // Select the p tag with the id of message
+  const pTag = document.querySelector("p#message");
   // Set the text of the p tag to be the greeting message
+  pTag.textContent = message;
 }
 
-cooperBradyGreeting();
+cooperBradyGreeting("cooper brady");
 
 // For Tasks 4, 5, 6, and 7 you will be getting much more programmatic with how you interact with the data, rather than manually finding and selecting
 
